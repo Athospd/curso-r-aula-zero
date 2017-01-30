@@ -3,24 +3,150 @@ title: "Aula Zero"
 output: html_notebook
 ---
 
-# Roteiro - Aula Zero
+# Roteiro
 
 - RStudio
+- R como calculadora
+- Pedindo ajuda 
+- Instalar pacotes
+- Objetos
+- Controles de Fluxo
+
+## RStudio
+
  - Quadrantes
  - .Rproj
- - Sugestões de disposição de pastas (3 estruturas) (slidezinho)
+ - Sugestões de disposição de pastas (3 estruturas)
  - Novo arquivo (script normal, rmd e notebook)
- - RMarkdown 
-- R como calculadora
+ - RMarkdown
+ 
+### Sugestões de disposição de pastas 
+
+**Estrutura 1**: Por extensão de arquivo.
+
+```{r, engine='bash', eval=FALSE}
+nome_do_projeto/
+  - .Rprofile   # códigos para rodar assim que abrir o projeto
+  - R/          # Código R, organizado com a-carrega.R, b-prepara bd.R, c-vis.R, d-modela, ...
+  - RData/      # Dados em formato .RData
+  - csv/        # Dados em .csv
+  - png/        # gráficos em PNG
+  - nome_do_projeto.Rproj
+```
+
+**Estrutura 2**: Típico projeto de análise estatística.
+
+```{r, engine='bash', eval = FALSE}
+project/
+  - README.Rmd   # Descrição do pacote
+  - set-up.R     # Pacotes etc
+  - R/           # Código R, organizado com 0-load.R, 1-tidy.R, 2-vis.R, ...
+  - data/        # Dados (estruturados ou não)
+  - figures/     # gráficos (pode ficar dentro de output/)
+  - output/      # Relatórios em .Rmd, .tex etc
+  - project.Rproj
+```
+
+**Estrutura 3**: Pacote do R (avançado).
+
+```{r, engine='bash', eval = FALSE}
+project/
+  - README.md    # Descrição do pacote
+  - DESCRIPTION  # Metadados estruturados do pacote e dependências
+  - NAMESPACE    # importações e exportações do pacote
+  - vignettes/   # Relatórios em .Rmd
+  - R/           # Funções do R
+  - data/        # Dados estruturados (tidy data)
+  - data-raw/    # Dados não estruturados e arqs 0-load.R, 1-tidy.R, 2-vis.R, ...
+  - project.Rproj
+```
+
+## R como calculadora
+
  - operadores aritméticos
  - operadores lógicos
-- Pedindo ajuda (slidezinho) #curso-r-2017
-- Instalar pacotes
+
+
+## Pedindo ajuda 
+
+- Help / documentação do R (comandos `help(funcao)` ou `?funcao`)
+- Google
+- Stack Overflow
+- Colega
+
+### Documentação do R
+
+A documentação do R serve para você aprender a usar uma determinada função.
+
+```{r, eval=FALSE}
+?mean
+help(mean)
+```
+
+### Google
+
+Há uma comunidade gigantesca de usuários de R que todos os dias geram infinidades de conteúdos e discussões. Não raro, você irá encontrar discussões sobre o seu problema simplesmente jogando o copiar/colar do seu erro no diretamente Google. Essa deve ser sua primeira tentativa!
+
+Exemplo (repare no 'R' adicionado na busca, também ajuda):
+
+```{r error = TRUE}
+log("5")
+```
+
+### Stack Overflow
+
+O [Stack Overflow](http://stackoverflow.com/) e o [Stack Overflow em Português](http://pt.stackoverflow.com/) são sites de Pergunta e Resposta amplamente utilizados por todas as linguagens de programação e R é uma delas.
+
+**Um ponto importante:** Como fazer uma **boa** pergunta no Stack Overflow?
+
+No site tem um tutorial com uma lista de boas práticas, [que se encontra aqui](http://pt.stackoverflow.com/help/how-to-ask). Algumas dicas são
+
+- Ser conciso
+- Ser específico
+- Ter mente aberta
+- Ser gentil
+
+TAG: **[curso-r-2017]**
+
+
+## instalar pacotes
+
  - via R
  - via Github
  - via arquivo
  - abinha de packages do RStudio
-- Objetos
+
+### via R
+
+```{r eval = FALSE}
+install.packages("magrittr")
+
+# e daí em diante, só carregar quando precisar
+library(magrittr)
+```
+
+### via Github
+
+[https://github.com/rstudio/shiny](https://github.com/rstudio/shiny)
+
+```{r, eval=FALSE}
+if (!require("devtools"))
+  install.packages("devtools")
+devtools::install_github("rstudio/shiny")
+```
+
+## Controles de Fluxo
+
+ - if, else
+ - for
+ - while
+ 
+```{r}
+
+```
+
+## Objetos
+
  - atomic
  - matriz
  - lista
@@ -28,19 +154,8 @@ output: html_notebook
  - fatores
  - valores especiais
  - formulas (*)
-- Controles de Fluxo
- - if, else
- - for
- - while
-
-## RStudio
-
-- Quadrantes
- - .Rproj
- - Sugestões de disposição de pastas (3 estruturas) (slidezinho)
- - Novo arquivo (script normal, rmd e notebook)
- - RMarkdown 
  
-```{r}
+ ```{r}
 
 ```
+

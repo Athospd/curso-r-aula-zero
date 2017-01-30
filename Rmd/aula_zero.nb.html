@@ -172,25 +172,177 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<div id="roteiro---aula-zero" class="section level1">
-<h1>Roteiro - Aula Zero</h1>
+<div id="roteiro" class="section level1">
+<h1>Roteiro</h1>
 <ul>
 <li>RStudio</li>
+<li>R como calculadora</li>
+<li>Pedindo ajuda</li>
+<li>Instalar pacotes</li>
+<li>Objetos</li>
+<li>Controles de Fluxo</li>
+</ul>
+<div id="rstudio" class="section level2">
+<h2>RStudio</h2>
+<ul>
 <li>Quadrantes</li>
 <li>.Rproj</li>
-<li>Sugestões de disposição de pastas (3 estruturas) (slidezinho)</li>
+<li>Sugestões de disposição de pastas (3 estruturas)</li>
 <li>Novo arquivo (script normal, rmd e notebook)</li>
 <li>RMarkdown</li>
-<li>R como calculadora</li>
+</ul>
+<div id="sugestoes-de-disposicao-de-pastas" class="section level3">
+<h3>Sugestões de disposição de pastas</h3>
+<p><strong>Estrutura 1</strong>: Por extensão de arquivo.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIm5vbWVfZG9fcHJvamV0by8iLCIgIC0gLlJwcm9maWxlICAgIyBjw7NkaWdvcyBwYXJhIHJvZGFyIGFzc2ltIHF1ZSBhYnJpciBvIHByb2pldG8iLCIgIC0gUi8gICAgICAgICAgIyBDw7NkaWdvIFIsIG9yZ2FuaXphZG8gY29tIGEtY2FycmVnYS5SLCBiLXByZXBhcmEgYmQuUiwgYy12aXMuUiwgZC1tb2RlbGEsIC4uLiIsIiAgLSBSRGF0YS8gICAgICAjIERhZG9zIGVtIGZvcm1hdG8gLlJEYXRhIiwiICAtIGNzdi8gICAgICAgICMgRGFkb3MgZW0gLmNzdiIsIiAgLSBwbmcvICAgICAgICAjIGdyw6FmaWNvcyBlbSBQTkciLCIgIC0gbm9tZV9kb19wcm9qZXRvLlJwcm9qIl19 -->
+<pre class="r"><code>nome_do_projeto/
+  - .Rprofile   # códigos para rodar assim que abrir o projeto
+  - R/          # Código R, organizado com a-carrega.R, b-prepara bd.R, c-vis.R, d-modela, ...
+  - RData/      # Dados em formato .RData
+  - csv/        # Dados em .csv
+  - png/        # gráficos em PNG
+  - nome_do_projeto.Rproj</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Estrutura 2</strong>: Típico projeto de análise estatística.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInByb2plY3QvIiwiICAtIFJFQURNRS5SbWQgICAjIERlc2NyacOnw6NvIGRvIHBhY290ZSIsIiAgLSBzZXQtdXAuUiAgICAgIyBQYWNvdGVzIGV0YyIsIiAgLSBSLyAgICAgICAgICAgIyBDw7NkaWdvIFIsIG9yZ2FuaXphZG8gY29tIDAtbG9hZC5SLCAxLXRpZHkuUiwgMi12aXMuUiwgLi4uIiwiICAtIGRhdGEvICAgICAgICAjIERhZG9zIChlc3RydXR1cmFkb3Mgb3UgbsOjbykiLCIgIC0gZmlndXJlcy8gICAgICMgZ3LDoWZpY29zIChwb2RlIGZpY2FyIGRlbnRybyBkZSBvdXRwdXQvKSIsIiAgLSBvdXRwdXQvICAgICAgIyBSZWxhdMOzcmlvcyBlbSAuUm1kLCAudGV4IGV0YyIsIiAgLSBwcm9qZWN0LlJwcm9qIl19 -->
+<pre class="r"><code>project/
+  - README.Rmd   # Descrição do pacote
+  - set-up.R     # Pacotes etc
+  - R/           # Código R, organizado com 0-load.R, 1-tidy.R, 2-vis.R, ...
+  - data/        # Dados (estruturados ou não)
+  - figures/     # gráficos (pode ficar dentro de output/)
+  - output/      # Relatórios em .Rmd, .tex etc
+  - project.Rproj</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Estrutura 3</strong>: Pacote do R (avançado).</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInByb2plY3QvIiwiICAtIFJFQURNRS5tZCAgICAjIERlc2NyacOnw6NvIGRvIHBhY290ZSIsIiAgLSBERVNDUklQVElPTiAgIyBNZXRhZGFkb3MgZXN0cnV0dXJhZG9zIGRvIHBhY290ZSBlIGRlcGVuZMOqbmNpYXMiLCIgIC0gTkFNRVNQQUNFICAgICMgaW1wb3J0YcOnw7VlcyBlIGV4cG9ydGHDp8O1ZXMgZG8gcGFjb3RlIiwiICAtIHZpZ25ldHRlcy8gICAjIFJlbGF0w7NyaW9zIGVtIC5SbWQiLCIgIC0gUi8gICAgICAgICAgICMgRnVuw6fDtWVzIGRvIFIiLCIgIC0gZGF0YS8gICAgICAgICMgRGFkb3MgZXN0cnV0dXJhZG9zICh0aWR5IGRhdGEpIiwiICAtIGRhdGEtcmF3LyAgICAjIERhZG9zIG7Do28gZXN0cnV0dXJhZG9zIGUgYXJxcyAwLWxvYWQuUiwgMS10aWR5LlIsIDItdmlzLlIsIC4uLiIsIiAgLSBwcm9qZWN0LlJwcm9qIl19 -->
+<pre class="r"><code>project/
+  - README.md    # Descrição do pacote
+  - DESCRIPTION  # Metadados estruturados do pacote e dependências
+  - NAMESPACE    # importações e exportações do pacote
+  - vignettes/   # Relatórios em .Rmd
+  - R/           # Funções do R
+  - data/        # Dados estruturados (tidy data)
+  - data-raw/    # Dados não estruturados e arqs 0-load.R, 1-tidy.R, 2-vis.R, ...
+  - project.Rproj</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="r-como-calculadora" class="section level2">
+<h2>R como calculadora</h2>
+<ul>
 <li>operadores aritméticos</li>
 <li>operadores lógicos</li>
-<li>Pedindo ajuda (slidezinho) #curso-r-2017</li>
-<li>Instalar pacotes</li>
+</ul>
+</div>
+<div id="pedindo-ajuda" class="section level2">
+<h2>Pedindo ajuda</h2>
+<ul>
+<li>Help / documentação do R (comandos <code>help(funcao)</code> ou <code>?funcao</code>)</li>
+<li>Google</li>
+<li>Stack Overflow</li>
+<li>Colega</li>
+</ul>
+<div id="documentacao-do-r" class="section level3">
+<h3>Documentação do R</h3>
+<p>A documentação do R serve para você aprender a usar uma determinada função.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbIj9tZWFuIiwiaGVscChtZWFuKSJdfQ== -->
+<pre class="r"><code>?mean
+help(mean)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="google" class="section level3">
+<h3>Google</h3>
+<p>Há uma comunidade gigantesca de usuários de R que todos os dias geram infinidades de conteúdos e discussões. Não raro, você irá encontrar discussões sobre o seu problema simplesmente jogando o copiar/colar do seu erro no diretamente Google. Essa deve ser sua primeira tentativa!</p>
+<p>Exemplo (repare no ‘R’ adicionado na busca, também ajuda):</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG9nKFwiNVwiKVxuYGBgIn0= -->
+<pre class="r"><code>log(&quot;5&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="stack-overflow" class="section level3">
+<h3>Stack Overflow</h3>
+<p>O <a href="http://stackoverflow.com/">Stack Overflow</a> e o <a href="http://pt.stackoverflow.com/">Stack Overflow em Português</a> são sites de Pergunta e Resposta amplamente utilizados por todas as linguagens de programação e R é uma delas.</p>
+<p><strong>Um ponto importante:</strong> Como fazer uma <strong>boa</strong> pergunta no Stack Overflow?</p>
+<p>No site tem um tutorial com uma lista de boas práticas, <a href="http://pt.stackoverflow.com/help/how-to-ask">que se encontra aqui</a>. Algumas dicas são</p>
+<ul>
+<li>Ser conciso</li>
+<li>Ser específico</li>
+<li>Ter mente aberta</li>
+<li>Ser gentil</li>
+</ul>
+<p>TAG: <strong>[curso-r-2017]</strong></p>
+</div>
+</div>
+<div id="instalar-pacotes" class="section level2">
+<h2>instalar pacotes</h2>
+<ul>
 <li>via R</li>
 <li>via Github</li>
 <li>via arquivo</li>
 <li>abinha de packages do RStudio</li>
-<li>Objetos</li>
+</ul>
+<div id="via-r" class="section level3">
+<h3>via R</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbImluc3RhbGwucGFja2FnZXMoXCJtYWdyaXR0clwiKSIsIiIsIiMgZSBkYcOtIGVtIGRpYW50ZSwgc8OzIGNhcnJlZ2FyIHF1YW5kbyBwcmVjaXNhciIsImxpYnJhcnkobWFncml0dHIpIl19 -->
+<pre class="r"><code>install.packages(&quot;magrittr&quot;)
+
+# e daí em diante, só carregar quando precisar
+library(magrittr)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="via-github" class="section level3">
+<h3>via Github</h3>
+<p><a href="https://github.com/rstudio/shiny" class="uri">https://github.com/rstudio/shiny</a></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbImlmICghcmVxdWlyZShcImRldnRvb2xzXCIpKSIsIiAgaW5zdGFsbC5wYWNrYWdlcyhcImRldnRvb2xzXCIpIiwiZGV2dG9vbHM6Omluc3RhbGxfZ2l0aHViKFwicnN0dWRpby9zaGlueVwiKSJdfQ== -->
+<pre class="r"><code>if (!require(&quot;devtools&quot;))
+  install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;rstudio/shiny&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="controles-de-fluxo" class="section level2">
+<h2>Controles de Fluxo</h2>
+<ul>
+<li>if, else</li>
+<li>for</li>
+<li>while</li>
+</ul>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="objetos" class="section level2">
+<h2>Objetos</h2>
+<ul>
 <li>atomic</li>
 <li>matriz</li>
 <li>lista</li>
@@ -198,27 +350,16 @@ $(document).ready(function () {
 <li>fatores</li>
 <li>valores especiais</li>
 <li>formulas (*)</li>
-<li>Controles de Fluxo</li>
-<li>if, else</li>
-<li>for</li>
-<li>while</li>
-</ul>
-<div id="rstudio" class="section level2">
-<h2>RStudio</h2>
-<ul>
-<li>Quadrantes</li>
-<li>.Rproj</li>
-<li>Sugestões de disposição de pastas (3 estruturas) (slidezinho)</li>
-<li>Novo arquivo (script normal, rmd e notebook)</li>
-<li>RMarkdown</li>
 </ul>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkF1bGEgWmVybyINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCiMgUm90ZWlybyAtIEF1bGEgWmVybw0KDQotIFJTdHVkaW8NCiAtIFF1YWRyYW50ZXMNCiAtIC5ScHJvag0KIC0gU3VnZXN0w7VlcyBkZSBkaXNwb3Npw6fDo28gZGUgcGFzdGFzICgzIGVzdHJ1dHVyYXMpIChzbGlkZXppbmhvKQ0KIC0gTm92byBhcnF1aXZvIChzY3JpcHQgbm9ybWFsLCBybWQgZSBub3RlYm9vaykNCiAtIFJNYXJrZG93biANCi0gUiBjb21vIGNhbGN1bGFkb3JhDQogLSBvcGVyYWRvcmVzIGFyaXRtw6l0aWNvcw0KIC0gb3BlcmFkb3JlcyBsw7NnaWNvcw0KLSBQZWRpbmRvIGFqdWRhIChzbGlkZXppbmhvKSAjY3Vyc28tci0yMDE3DQotIEluc3RhbGFyIHBhY290ZXMNCiAtIHZpYSBSDQogLSB2aWEgR2l0aHViDQogLSB2aWEgYXJxdWl2bw0KIC0gYWJpbmhhIGRlIHBhY2thZ2VzIGRvIFJTdHVkaW8NCi0gT2JqZXRvcw0KIC0gYXRvbWljDQogLSBtYXRyaXoNCiAtIGxpc3RhDQogLSBkYXRhLmZyYW1lDQogLSBmYXRvcmVzDQogLSB2YWxvcmVzIGVzcGVjaWFpcw0KIC0gZm9ybXVsYXMgKCopDQotIENvbnRyb2xlcyBkZSBGbHV4bw0KIC0gaWYsIGVsc2UNCiAtIGZvcg0KIC0gd2hpbGUNCg0KIyMgUlN0dWRpbw0KDQotIFF1YWRyYW50ZXMNCiAtIC5ScHJvag0KIC0gU3VnZXN0w7VlcyBkZSBkaXNwb3Npw6fDo28gZGUgcGFzdGFzICgzIGVzdHJ1dHVyYXMpIChzbGlkZXppbmhvKQ0KIC0gTm92byBhcnF1aXZvIChzY3JpcHQgbm9ybWFsLCBybWQgZSBub3RlYm9vaykNCiAtIFJNYXJrZG93biANCiANCmBgYHtyfQ0KDQpgYGANCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkF1bGEgWmVybyINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCiMgUm90ZWlybw0KDQotIFJTdHVkaW8NCi0gUiBjb21vIGNhbGN1bGFkb3JhDQotIFBlZGluZG8gYWp1ZGEgDQotIEluc3RhbGFyIHBhY290ZXMNCi0gT2JqZXRvcw0KLSBDb250cm9sZXMgZGUgRmx1eG8NCg0KIyMgUlN0dWRpbw0KDQogLSBRdWFkcmFudGVzDQogLSAuUnByb2oNCiAtIFN1Z2VzdMO1ZXMgZGUgZGlzcG9zacOnw6NvIGRlIHBhc3RhcyAoMyBlc3RydXR1cmFzKQ0KIC0gTm92byBhcnF1aXZvIChzY3JpcHQgbm9ybWFsLCBybWQgZSBub3RlYm9vaykNCiAtIFJNYXJrZG93bg0KIA0KIyMjIFN1Z2VzdMO1ZXMgZGUgZGlzcG9zacOnw6NvIGRlIHBhc3RhcyANCg0KKipFc3RydXR1cmEgMSoqOiBQb3IgZXh0ZW5zw6NvIGRlIGFycXVpdm8uDQoNCmBgYHtyLCBlbmdpbmU9J2Jhc2gnLCBldmFsPUZBTFNFfQ0Kbm9tZV9kb19wcm9qZXRvLw0KICAtIC5ScHJvZmlsZSAgICMgY8OzZGlnb3MgcGFyYSByb2RhciBhc3NpbSBxdWUgYWJyaXIgbyBwcm9qZXRvDQogIC0gUi8gICAgICAgICAgIyBDw7NkaWdvIFIsIG9yZ2FuaXphZG8gY29tIGEtY2FycmVnYS5SLCBiLXByZXBhcmEgYmQuUiwgYy12aXMuUiwgZC1tb2RlbGEsIC4uLg0KICAtIFJEYXRhLyAgICAgICMgRGFkb3MgZW0gZm9ybWF0byAuUkRhdGENCiAgLSBjc3YvICAgICAgICAjIERhZG9zIGVtIC5jc3YNCiAgLSBwbmcvICAgICAgICAjIGdyw6FmaWNvcyBlbSBQTkcNCiAgLSBub21lX2RvX3Byb2pldG8uUnByb2oNCmBgYA0KDQoqKkVzdHJ1dHVyYSAyKio6IFTDrXBpY28gcHJvamV0byBkZSBhbsOhbGlzZSBlc3RhdMOtc3RpY2EuDQoNCmBgYHtyLCBlbmdpbmU9J2Jhc2gnLCBldmFsID0gRkFMU0V9DQpwcm9qZWN0Lw0KICAtIFJFQURNRS5SbWQgICAjIERlc2NyacOnw6NvIGRvIHBhY290ZQ0KICAtIHNldC11cC5SICAgICAjIFBhY290ZXMgZXRjDQogIC0gUi8gICAgICAgICAgICMgQ8OzZGlnbyBSLCBvcmdhbml6YWRvIGNvbSAwLWxvYWQuUiwgMS10aWR5LlIsIDItdmlzLlIsIC4uLg0KICAtIGRhdGEvICAgICAgICAjIERhZG9zIChlc3RydXR1cmFkb3Mgb3UgbsOjbykNCiAgLSBmaWd1cmVzLyAgICAgIyBncsOhZmljb3MgKHBvZGUgZmljYXIgZGVudHJvIGRlIG91dHB1dC8pDQogIC0gb3V0cHV0LyAgICAgICMgUmVsYXTDs3Jpb3MgZW0gLlJtZCwgLnRleCBldGMNCiAgLSBwcm9qZWN0LlJwcm9qDQpgYGANCg0KKipFc3RydXR1cmEgMyoqOiBQYWNvdGUgZG8gUiAoYXZhbsOnYWRvKS4NCg0KYGBge3IsIGVuZ2luZT0nYmFzaCcsIGV2YWwgPSBGQUxTRX0NCnByb2plY3QvDQogIC0gUkVBRE1FLm1kICAgICMgRGVzY3Jpw6fDo28gZG8gcGFjb3RlDQogIC0gREVTQ1JJUFRJT04gICMgTWV0YWRhZG9zIGVzdHJ1dHVyYWRvcyBkbyBwYWNvdGUgZSBkZXBlbmTDqm5jaWFzDQogIC0gTkFNRVNQQUNFICAgICMgaW1wb3J0YcOnw7VlcyBlIGV4cG9ydGHDp8O1ZXMgZG8gcGFjb3RlDQogIC0gdmlnbmV0dGVzLyAgICMgUmVsYXTDs3Jpb3MgZW0gLlJtZA0KICAtIFIvICAgICAgICAgICAjIEZ1bsOnw7VlcyBkbyBSDQogIC0gZGF0YS8gICAgICAgICMgRGFkb3MgZXN0cnV0dXJhZG9zICh0aWR5IGRhdGEpDQogIC0gZGF0YS1yYXcvICAgICMgRGFkb3MgbsOjbyBlc3RydXR1cmFkb3MgZSBhcnFzIDAtbG9hZC5SLCAxLXRpZHkuUiwgMi12aXMuUiwgLi4uDQogIC0gcHJvamVjdC5ScHJvag0KYGBgDQoNCiMjIFIgY29tbyBjYWxjdWxhZG9yYQ0KDQogLSBvcGVyYWRvcmVzIGFyaXRtw6l0aWNvcw0KIC0gb3BlcmFkb3JlcyBsw7NnaWNvcw0KDQoNCiMjIFBlZGluZG8gYWp1ZGEgDQoNCi0gSGVscCAvIGRvY3VtZW50YcOnw6NvIGRvIFIgKGNvbWFuZG9zIGBoZWxwKGZ1bmNhbylgIG91IGA/ZnVuY2FvYCkNCi0gR29vZ2xlDQotIFN0YWNrIE92ZXJmbG93DQotIENvbGVnYQ0KDQojIyMgRG9jdW1lbnRhw6fDo28gZG8gUg0KDQpBIGRvY3VtZW50YcOnw6NvIGRvIFIgc2VydmUgcGFyYSB2b2PDqiBhcHJlbmRlciBhIHVzYXIgdW1hIGRldGVybWluYWRhIGZ1bsOnw6NvLg0KDQpgYGB7ciwgZXZhbD1GQUxTRX0NCj9tZWFuDQpoZWxwKG1lYW4pDQpgYGANCg0KIyMjIEdvb2dsZQ0KDQpIw6EgdW1hIGNvbXVuaWRhZGUgZ2lnYW50ZXNjYSBkZSB1c3XDoXJpb3MgZGUgUiBxdWUgdG9kb3Mgb3MgZGlhcyBnZXJhbSBpbmZpbmlkYWRlcyBkZSBjb250ZcO6ZG9zIGUgZGlzY3Vzc8O1ZXMuIE7Do28gcmFybywgdm9jw6ogaXLDoSBlbmNvbnRyYXIgZGlzY3Vzc8O1ZXMgc29icmUgbyBzZXUgcHJvYmxlbWEgc2ltcGxlc21lbnRlIGpvZ2FuZG8gbyBjb3BpYXIvY29sYXIgZG8gc2V1IGVycm8gbm8gZGlyZXRhbWVudGUgR29vZ2xlLiBFc3NhIGRldmUgc2VyIHN1YSBwcmltZWlyYSB0ZW50YXRpdmEhDQoNCkV4ZW1wbG8gKHJlcGFyZSBubyAnUicgYWRpY2lvbmFkbyBuYSBidXNjYSwgdGFtYsOpbSBhanVkYSk6DQoNCmBgYHtyIGVycm9yID0gVFJVRX0NCmxvZygiNSIpDQpgYGANCg0KIyMjIFN0YWNrIE92ZXJmbG93DQoNCk8gW1N0YWNrIE92ZXJmbG93XShodHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vKSBlIG8gW1N0YWNrIE92ZXJmbG93IGVtIFBvcnR1Z3XDqnNdKGh0dHA6Ly9wdC5zdGFja292ZXJmbG93LmNvbS8pIHPDo28gc2l0ZXMgZGUgUGVyZ3VudGEgZSBSZXNwb3N0YSBhbXBsYW1lbnRlIHV0aWxpemFkb3MgcG9yIHRvZGFzIGFzIGxpbmd1YWdlbnMgZGUgcHJvZ3JhbWHDp8OjbyBlIFIgw6kgdW1hIGRlbGFzLg0KDQoqKlVtIHBvbnRvIGltcG9ydGFudGU6KiogQ29tbyBmYXplciB1bWEgKipib2EqKiBwZXJndW50YSBubyBTdGFjayBPdmVyZmxvdz8NCg0KTm8gc2l0ZSB0ZW0gdW0gdHV0b3JpYWwgY29tIHVtYSBsaXN0YSBkZSBib2FzIHByw6F0aWNhcywgW3F1ZSBzZSBlbmNvbnRyYSBhcXVpXShodHRwOi8vcHQuc3RhY2tvdmVyZmxvdy5jb20vaGVscC9ob3ctdG8tYXNrKS4gQWxndW1hcyBkaWNhcyBzw6NvDQoNCi0gU2VyIGNvbmNpc28NCi0gU2VyIGVzcGVjw61maWNvDQotIFRlciBtZW50ZSBhYmVydGENCi0gU2VyIGdlbnRpbA0KDQpUQUc6ICoqW2N1cnNvLXItMjAxN10qKg0KDQoNCiMjIGluc3RhbGFyIHBhY290ZXMNCg0KIC0gdmlhIFINCiAtIHZpYSBHaXRodWINCiAtIHZpYSBhcnF1aXZvDQogLSBhYmluaGEgZGUgcGFja2FnZXMgZG8gUlN0dWRpbw0KDQojIyMgdmlhIFINCg0KYGBge3IgZXZhbCA9IEZBTFNFfQ0KaW5zdGFsbC5wYWNrYWdlcygibWFncml0dHIiKQ0KDQojIGUgZGHDrSBlbSBkaWFudGUsIHPDsyBjYXJyZWdhciBxdWFuZG8gcHJlY2lzYXINCmxpYnJhcnkobWFncml0dHIpDQpgYGANCg0KIyMjIHZpYSBHaXRodWINCg0KW2h0dHBzOi8vZ2l0aHViLmNvbS9yc3R1ZGlvL3NoaW55XShodHRwczovL2dpdGh1Yi5jb20vcnN0dWRpby9zaGlueSkNCg0KYGBge3IsIGV2YWw9RkFMU0V9DQppZiAoIXJlcXVpcmUoImRldnRvb2xzIikpDQogIGluc3RhbGwucGFja2FnZXMoImRldnRvb2xzIikNCmRldnRvb2xzOjppbnN0YWxsX2dpdGh1YigicnN0dWRpby9zaGlueSIpDQpgYGANCg0KIyMgQ29udHJvbGVzIGRlIEZsdXhvDQoNCiAtIGlmLCBlbHNlDQogLSBmb3INCiAtIHdoaWxlDQogDQpgYGB7cn0NCg0KYGBgDQoNCiMjIE9iamV0b3MNCg0KIC0gYXRvbWljDQogLSBtYXRyaXoNCiAtIGxpc3RhDQogLSBkYXRhLmZyYW1lDQogLSBmYXRvcmVzDQogLSB2YWxvcmVzIGVzcGVjaWFpcw0KIC0gZm9ybXVsYXMgKCopDQogDQogYGBge3J9DQoNCmBgYA0KDQo=</div>
 
 
 
