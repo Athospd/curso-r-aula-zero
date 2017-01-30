@@ -1,0 +1,46 @@
+---
+title: "Aula Zero"
+output: html_notebook
+---
+
+# Roteiro - Aula Zero
+
+- RStudio
+ - Quadrantes
+ - .Rproj
+ - Sugestões de disposição de pastas (3 estruturas) (slidezinho)
+ - Novo arquivo (script normal, rmd e notebook)
+ - RMarkdown 
+- R como calculadora
+ - operadores aritméticos
+ - operadores lógicos
+- Pedindo ajuda (slidezinho) #curso-r-2017
+- Instalar pacotes
+ - via R
+ - via Github
+ - via arquivo
+ - abinha de packages do RStudio
+- Objetos
+ - atomic
+ - matriz
+ - lista
+ - data.frame
+ - fatores
+ - valores especiais
+ - formulas (*)
+- Controles de Fluxo
+ - if, else
+ - for
+ - while
+
+## RStudio
+
+- Quadrantes
+ - .Rproj
+ - Sugestões de disposição de pastas (3 estruturas) (slidezinho)
+ - Novo arquivo (script normal, rmd e notebook)
+ - RMarkdown 
+ 
+```{r}
+
+```
