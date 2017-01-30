@@ -9,8 +9,22 @@ output: html_notebook
 - R como calculadora
 - Pedindo ajuda 
 - Instalar pacotes
-- Objetos
 - Controles de Fluxo
+- Objetos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## RStudio
 
@@ -61,10 +75,42 @@ project/
   - project.Rproj
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## R como calculadora
 
  - operadores aritméticos
  - operadores lógicos
+
+```{r}
+
+```
+
+[https://curso-r.github.io/verao2017/rbase/#miscelâneas](https://curso-r.github.io/verao2017/rbase/#miscelâneas)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Pedindo ajuda 
@@ -109,6 +155,22 @@ No site tem um tutorial com uma lista de boas práticas, [que se encontra aqui](
 TAG: **[curso-r-2017]**
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## instalar pacotes
 
  - via R
@@ -135,27 +197,321 @@ if (!require("devtools"))
 devtools::install_github("rstudio/shiny")
 ```
 
+### Via arquivo .zip/.tar.gz
+
+```{r, eval=FALSE}
+install.packages("C:/caminho/para/o/arquivo/zipapo/pacote.zip", 
+                 repos = NULL)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Controles de Fluxo
 
  - if, else
  - for
  - while
  
-```{r}
+ 
+### if else
 
+```{r}
+x <- 2
+if(x == 1) {
+  print("oi")
+} else { # <--------- atenção na identação
+  print("tchau")
+}
 ```
+
+ 
+### for
+
+```{r}
+for(contador in 1:5){
+  # várias coisas...
+  print(contador)
+}
+```
+
+```{r}
+vetor <- 30:35
+indices <- seq_along(vetor)
+for(i in indices){
+  print(vetor[1:i] / 2)
+}
+```
+
+### while
+
+```{r}
+# set.seed(1)
+jogadas <- 0
+coroa <- FALSE
+while(!coroa) {
+  coroa <- runif(1) > 0.5
+  jogadas <- jogadas + 1
+}
+jogadas
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Objetos
 
  - atomic
+ - vetores
  - matriz
+ - funções
  - lista
  - data.frame
  - fatores
  - valores especiais
  - formulas (*)
  
- ```{r}
+ 
+ 
+ 
+ 
+### Atomic
+
+Existem cinco classes básicas ou "atômicas" no R:
+
+- character `"UAH!"` (é o varchar do SQL)
+- numeric `0.95` (números reais)
+- integer `100515` (inteiros)
+- complex `2 + 5i` (números complexos, a + bi)
+- logical `TRUE` (booleanos, TRUE/FALSE)
+
+```{r}
 
 ```
 
+
+
+
+
+
+### Vetores
+
+```{r}
+vetor1 <- c(1, 2, 3, 4)
+vetor2 <- c(0, 10)
+vetor_palavras <- c("10", "1000")
+class(vetor1)
+```
+
+Misturando classes diferentes
+
+```{r, eval=FALSE}
+y <- c(1.7, "a")  ## character
+y <- c(TRUE, 2)   ## numeric
+y <- c(TRUE, "a") ## character
+```
+
+**DOMINANTE** `character > complex > numeric > integer > logical` **RECESSIVO**
+
+
+
+
+
+### Matrizes
+
+```{r}
+m <- matrix(1:6, nrow = 2, ncol = 3)
+m
+dim(m) # funçăo dim() retorna a dimensăo do objeto.
+```
+
+```{r, eval=FALSE}
+m[3,  ]   # seleciona uma linha
+# m[ , 2]   # seleciona uma coluna
+# m[1, 2]   # seleciona um elemento
+# t(m)      # matriz transposta
+# m %*% n   # multiplicação matricial
+# solve(m)  # matriz inversa
+```
+
+
+
+
+
+
+### Funções
+
+```{r}
+round(5.634)
+```
+
+```{r}
+dado <- 1:6
+# round(mean(dado))
+```
+
+
+```{r}
+soma <- function(x, y = 0) {
+  resposta <- x + y
+  return(resposta)
+}
+```
+
+A função acima tem 
+
+- o nome `soma`
+- os argumentos `x` e `y`
+- o corpo `resposta <- x + y`
+- o valor padrão `0` para o argumento `y` (`y = 0`)
+
+Para usá-la é como qualquer outra função:
+
+```{r}
+soma(2, 1) # soma de 2 + 1
+soma(2) # soma de 2 + 0
+```
+
+
+
+
+### Listas
+
+```{r}
+x <- list(1:5, "Z", TRUE, c("a", "b"))
+x
+```
+
+```{r}
+pedido <- list(pedido_id = 8001406,
+               pedido_registro = as.Date("2016-12-12"),
+               nome = "Athos", 
+               sobrenome = "Petri Damiani", 
+               cpf = "12345678900", 
+               email = "athos.damiani@gmail.com", 
+               qualidades = c("incrível", "impressionante"),
+               itens = list(
+                 list(descricao = "Ferrari", 
+                      frete = 0, 
+                      valor = 500000),
+                 list(descricao = "Dolly", 
+                      frete = 1.5, 
+                      valor = 3.90)
+               ), 
+               endereco = list(entrega = list(logradouro = "Rua da Glória", 
+                                              numero = "123",
+                                              complemento = "apto 71"),
+                               cobranca = list(logradouro = "Rua Jose de Oliveira Coutinho",
+                                               numero = "151",
+                                               complemento = "5o andar")
+               )
+)
+```
+
+**Utilidades**
+
+```{r, eval=FALSE}
+pedido$cpf     # elemento chamado 'cpf'
+pedido[1]      # nova lista com apenas o primeiro elemento
+pedido[[2]]    # segundo elemento
+pedido["nome"] # nova lista com apenas o elemento chamado 'nome'
+```
+
+
+
+
+
+
+### data.frame
+
+Algumas funções úteis:
+
+
+```{r, error=TRUE}
+minha_lista <- list(x = c(1, 2, 3), y = c("a", "b"))
+as.data.frame(minha_lista)
+```
+
+```{r}
+minha_lista <- list(x = c(1, 2, 3), y = c("a", "b", "c"))
+as.data.frame(minha_lista)
+```
+
+- `head()` Mostra as primeiras 6 linhas.
+- `tail()` Mostra as últimas 6 linhas.
+- `dim()` Número de linhas e de colunas.
+- `names()` Os nomes das colunas (variáveis).
+- `str()` Estrutura do data.frame. Mostra, entre outras coisas, as classes de cada coluna.
+- `cbind()` Acopla duas tabelas lado a lado.
+- `rbind()` Empilha duas tabelas.
+
+```{r}
+head(iris)  
+str(iris)
+```
+
+
+
+
+
+
+### Valores especiais
+
+Existem valores reservados para representar dados faltantes, infinitos, e indefiniçőes matemáticas.
+
+- **NA** (Not Available) significa dado faltante/indisponível. 
+- **NaN** (Not a Number) representa indefinições matemáticas, como `0/0` e `log(-1)`. Um `NaN` é um `NA`, mas a recíproca não é verdadeira.
+- **Inf** 
+- **NULL** 
+- Use as funções `is.na()`, `is.nan()`, `is.infinite()` e `is.null()` para testar se um objeto é um desses valores.
+
+```{r}
+x <- c(NaN, Inf, 1, 2, 3, NA)
+is.na(x)
+is.nan(x)
+```
+
+
+
+
+
+### Fatores
+
+```{r}
+sexo <- c("M", "H", "H", "H", "M", "M", "H")
+fator <- as.factor(sexo)
+fator
+```
+
+```{r}
+as.numeric(fator)
+# levels(fator)
+```
